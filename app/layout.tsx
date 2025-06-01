@@ -11,12 +11,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "BBallerXchange | Game-Changing Marketplace",
+  title: "BBallerXchange | Heat Loading…",
   description: "The future of premium sneaker trading. Exclusive drops, verified authenticity, unmatched experience.",
   keywords: "sneakers, basketball, premium, exclusive, drops, marketplace, authentic, trading",
   robots: "index, follow",
   openGraph: {
-    title: "BBallerXchange | Game-Changing Marketplace",
+    title: "BBallerXchange | Heat Loading…",
     description: "The future of premium sneaker trading. Exclusive drops, verified authenticity, unmatched experience.",
     url: "https://bballerxchange.com",
     siteName: "BBallerXchange",
@@ -24,17 +24,20 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BBallerXchange | Game-Changing Marketplace",
+    title: "BBallerXchange | Heat Loading…",
     description: "The future of premium sneaker trading. Exclusive drops, verified authenticity, unmatched experience.",
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#f97316",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="icon" href="/bbxlogo.svg" type="image/svg+xml" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
