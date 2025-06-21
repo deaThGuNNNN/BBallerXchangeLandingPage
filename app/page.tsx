@@ -3,13 +3,14 @@ import Image from "next/image"
 import type { Metadata } from "next"
 import BasketballBackgroundWrapper from "@/components/BasketballBackgroundWrapper"
 import React, { useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function LandingPage() {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", lastname: "" });
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const router = useRouter();
 
   // Replace with your Mailchimp form action URL
   const MAILCHIMP_URL = "https://YOUR_MAILCHIMP_URL";
@@ -33,7 +34,8 @@ export default function LandingPage() {
         body: formData,
         mode: "no-cors",
       });
-      setSubmitted(true);
+      // Redirect to confirmation page
+      router.push('/confirm');
     } catch (err) {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -76,12 +78,13 @@ export default function LandingPage() {
               JOIN WAITLIST
             </button>
           )}
-          {showForm && !submitted && (
+          {showForm && (
             <form
               action="https://gmail.us15.list-manage.com/subscribe/post?u=c98feb1046ae6101c18d4ca58&id=dead7d3b4d&f_id=00e398e1f0"
               method="POST"
               target="_blank"
               className="flex flex-col gap-6 w-full max-w-md mx-auto bg-transparent p-0 rounded-none shadow-none border-none"
+              onSubmit={handleSubmit}
             >
               <input
                 type="text"
@@ -103,16 +106,17 @@ export default function LandingPage() {
               </div>
               <button
                 type="submit"
-                className="w-full border border-white text-white bg-transparent font-bold uppercase tracking-widest py-3 mt-2 transition-all duration-200 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white"
+                disabled={submitting}
+                className="w-full border border-white text-white bg-transparent font-bold uppercase tracking-widest py-3 mt-2 transition-all duration-200 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit
+                {submitting ? "Submitting..." : "Submit"}
               </button>
+              {error && (
+                <div className="bg-red-100 text-red-800 p-4 rounded-lg text-center font-semibold">
+                  {error}
+                </div>
+              )}
             </form>
-          )}
-          {submitted && (
-            <div className="bg-green-100 text-green-800 p-4 rounded-lg text-center font-semibold">
-              Thank you for joining the waitlist!
-            </div>
           )}
         </div>
       </div>
