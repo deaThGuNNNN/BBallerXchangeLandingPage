@@ -34,8 +34,8 @@ export default function LandingPage() {
         body: formData,
         mode: "no-cors",
       });
-      // Redirect to confirmation page
-      router.push('/confirm');
+      // Redirect to success page
+      router.push('/success');
     } catch (err) {
       setError("Something went wrong. Please try again.");
     } finally {
