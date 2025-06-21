@@ -22,16 +22,28 @@ export default function ConfirmPage() {
       {/* Animated Basketball Background */}
       <BasketballBackgroundWrapper />
       
-      {/* Enhanced Noise Background with gradient overlay */}
+      {/* Enhanced Noise Background */}
       <div className="absolute inset-0 opacity-30 bg-noise animate-grain"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-orange-900/20"></div>
       
-      {/* Floating particles */}
+      {/* Geometric floating elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-white/10 rounded-full animate-pulse"
+            className="absolute border border-white/5 rotate-45"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${20 + Math.random() * 40}px`,
+              height: `${20 + Math.random() * 40}px`,
+              animationDelay: `${Math.random() * 3}s`,
+            }}
+          />
+        ))}
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={`dot-${i}`}
+            className="absolute w-1 h-1 bg-white/10 rounded-full animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -42,95 +54,110 @@ export default function ConfirmPage() {
         ))}
       </div>
 
-      {/* Logo at the Top with enhanced glow */}
-      <div className="relative z-20 flex justify-center w-full mb-6 sm:mb-8 pt-2 sm:pt-0 sm:mt-0">
+      {/* Logo at the Top with sophisticated glow */}
+      <div className="relative z-20 flex justify-center w-full mb-8 sm:mb-12 pt-2 sm:pt-0 sm:mt-0">
         <div className="relative">
-          <div className="absolute inset-0 blur-xl bg-white/20 rounded-full scale-110 animate-pulse"></div>
+          <div className="absolute inset-0 blur-2xl bg-white/10 rounded-full scale-125 animate-pulse"></div>
+          <div className="absolute inset-0 blur-xl bg-white/5 rounded-full scale-150"></div>
           <Image
             src="/bbx-logo.svg"
             alt="BBallerXchange Logo"
             width={320}
             height={128}
             priority
-            className="relative w-auto h-24 xs:h-32 sm:h-40 md:h-48 filter drop-shadow-2xl mx-auto"
+            className="relative w-auto h-20 xs:h-28 sm:h-36 md:h-44 filter drop-shadow-2xl mx-auto"
           />
         </div>
       </div>
 
       {/* Enhanced Confirmation Content */}
-      <div className={`relative z-10 flex flex-col items-center text-center w-full max-w-lg mx-auto flex-1 justify-center px-2 sm:px-0 transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="relative bg-gradient-to-br from-black/80 via-black/60 to-black/80 backdrop-blur-xl border border-white/30 rounded-2xl p-8 sm:p-12 w-full shadow-2xl">
+      <div className={`relative z-10 flex flex-col items-center text-center w-full max-w-2xl mx-auto flex-1 justify-center px-2 sm:px-0 transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="relative bg-black/90 backdrop-blur-xl border border-white/20 rounded-3xl p-8 sm:p-16 w-full shadow-[0_0_100px_rgba(255,255,255,0.1)]">
           
-          {/* Animated border glow */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/20 via-orange-500/20 to-purple-500/20 blur-sm animate-pulse"></div>
-          <div className="absolute inset-[1px] rounded-2xl bg-black/90"></div>
+          {/* Sophisticated border effects */}
+          <div className="absolute inset-0 rounded-3xl border border-white/10"></div>
+          <div className="absolute inset-[1px] rounded-3xl border border-white/5"></div>
           
           {/* Content container */}
           <div className="relative z-10">
-            {/* Animated Success Icon */}
-            <div className="flex justify-center mb-8">
+            {/* Minimalist Success Icon */}
+            <div className="flex justify-center mb-12">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full blur-lg animate-pulse"></div>
-                <div className="relative bg-gradient-to-r from-green-400 to-emerald-500 rounded-full p-4 animate-bounce">
-                  <CheckCircle className="w-12 h-12 text-white" />
+                <div className="absolute inset-0 bg-white/5 rounded-full blur-xl scale-150 animate-pulse"></div>
+                <div className="relative bg-white rounded-full p-6 shadow-[0_0_50px_rgba(255,255,255,0.3)] animate-pulse">
+                  <CheckCircle className="w-16 h-16 text-black" strokeWidth={1.5} />
                 </div>
               </div>
             </div>
 
-            {/* Main Heading with gradient text */}
-            <h1 className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent font-black text-2xl sm:text-3xl md:text-4xl mb-6 leading-tight tracking-wide">
+            {/* Main Heading with sophisticated typography */}
+            <h1 className="text-white font-black text-3xl sm:text-4xl md:text-5xl mb-8 leading-tight tracking-wider relative">
               Almost finished...
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-0.5 bg-white/20"></div>
             </h1>
             
-            {/* Subheading with icon */}
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-full p-2 animate-pulse">
-                <Mail className="w-5 h-5 text-white" />
+            {/* Subheading with elegant icon */}
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <div className="bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20">
+                <Mail className="w-6 h-6 text-white" strokeWidth={1.5} />
               </div>
-              <p className="text-white/90 text-lg sm:text-xl font-semibold">
+              <p className="text-white/90 text-xl sm:text-2xl font-light tracking-wide">
                 We need to confirm your email address.
               </p>
             </div>
             
-            {/* Description with enhanced styling */}
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-8">
-              <p className="text-white/80 text-base sm:text-lg leading-relaxed">
+            {/* Description with elegant card */}
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-12 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+              <p className="text-white/80 text-lg sm:text-xl leading-relaxed font-light">
                 To complete the subscription process, please{' '}
-                <span className="text-orange-400 font-semibold">click the link</span>{' '}
+                <span className="text-white font-medium border-b border-white/30">click the link</span>{' '}
                 in the email we just sent you.
               </p>
             </div>
 
-            {/* Enhanced CTA Section */}
-            <div className="space-y-4">
-              {/* Back to Home Button with enhanced styling */}
+            {/* Sophisticated CTA Section */}
+            <div className="space-y-6">
+              {/* Back to Home Button with premium styling */}
               <Link 
                 href="/"
-                className="group relative inline-flex items-center justify-center gap-3 w-full bg-gradient-to-r from-white to-gray-100 text-black font-bold text-base sm:text-lg tracking-[0.1em] py-4 px-6 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-white/50 overflow-hidden"
+                className="group relative inline-flex items-center justify-center gap-4 w-full bg-white text-black font-bold text-lg sm:text-xl tracking-[0.15em] py-5 px-8 rounded-2xl transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] focus:outline-none focus:ring-4 focus:ring-white/30 overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <ArrowLeft className="relative w-5 h-5 transition-transform group-hover:-translate-x-1" />
-                <span className="relative group-hover:text-white transition-colors">BACK TO HOME</span>
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                <ArrowLeft className="relative w-6 h-6 transition-all duration-300 group-hover:-translate-x-2 group-hover:text-white" strokeWidth={1.5} />
+                <span className="relative group-hover:text-white transition-colors duration-300">BACK TO HOME</span>
+                
+                {/* Subtle hover effect lines */}
+                <div className="absolute top-0 left-0 w-full h-0.5 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                <div className="absolute bottom-0 right-0 w-full h-0.5 bg-white/20 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
               </Link>
               
-              {/* Additional info text */}
-              <p className="text-white/50 text-sm">
-                Didn't receive the email? Check your spam folder or{' '}
-                <Link href="/" className="text-orange-400 hover:text-orange-300 underline">
-                  try again
-                </Link>
-              </p>
+              {/* Additional info text with elegant styling */}
+              <div className="border-t border-white/10 pt-6">
+                <p className="text-white/40 text-sm font-light tracking-wide">
+                  Didn't receive the email? Check your spam folder or{' '}
+                  <Link href="/" className="text-white/70 hover:text-white border-b border-white/20 hover:border-white/40 transition-colors duration-300">
+                    try again
+                  </Link>
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Floating success elements */}
-        <div className="absolute -top-4 -right-4 w-8 h-8 bg-green-500/20 rounded-full animate-ping"></div>
-        <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-orange-500/20 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+        {/* Minimalist floating elements */}
+        <div className="absolute -top-6 -right-6 w-12 h-12 border border-white/10 rounded-full animate-ping"></div>
+        <div className="absolute -bottom-6 -left-6 w-8 h-8 border border-white/5 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+        
+        {/* Corner accents */}
+        <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/10"></div>
+        <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/10"></div>
+        <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-white/10"></div>
+        <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/10"></div>
       </div>
 
-      {/* Bottom decorative element */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+      {/* Bottom elegant line */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
     </main>
   )
 } 
