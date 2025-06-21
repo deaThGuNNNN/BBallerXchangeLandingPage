@@ -1,0 +1,121 @@
+'use client';
+import Image from "next/image"
+import type { Metadata } from "next"
+import BasketballBackgroundWrapper from "@/components/BasketballBackgroundWrapper"
+import React, { useState } from "react"
+
+export default function LandingPage() {
+  const [showForm, setShowForm] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", lastname: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  // Replace with your Mailchimp form action URL
+  const MAILCHIMP_URL = "https://YOUR_MAILCHIMP_URL";
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError("");
+    try {
+      const formData = new FormData();
+      formData.append("NAME", form.name);
+      formData.append("EMAIL", form.email);
+      formData.append("LASTNAME", form.lastname);
+      // Mailchimp expects specific field names, adjust as needed
+      const res = await fetch(MAILCHIMP_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-black relative overflow-hidden flex flex-col sm:justify-center sm:items-center px-2 sm:px-4 pt-4 sm:pt-0">
+      {/* Animated Basketball Background */}
+      <BasketballBackgroundWrapper />
+      {/* Noise Background */}
+      <div className="absolute inset-0 opacity-30 bg-noise animate-grain"></div>
+
+      {/* Logo at the Top (always at top on mobile, centered on desktop) */}
+      <div className="relative z-20 flex justify-center w-full mb-6 sm:mb-8 pt-2 sm:pt-0 sm:mt-0">
+        <Image
+          src="/bbx-logo.svg"
+          alt="BBallerXchange Logo"
+          width={320}
+          height={128}
+          priority
+          className="w-auto h-32 xs:h-40 sm:h-48 md:h-56 filter drop-shadow-2xl mx-auto"
+        />
+      </div>
+
+      {/* Content + Button (centered on desktop, split on mobile) */}
+      <div className="relative z-10 flex flex-col items-center text-center w-full max-w-md mx-auto flex-1 justify-center px-2 sm:px-0 sm:justify-center sm:items-center">
+        <h1 className="text-white font-bold text-lg xs:text-xl sm:text-2xl md:text-3xl mb-8 sm:mb-8 leading-relaxed">
+          Join the Next Era Of Basketball Culture. Limited Drops, Pro Gear, And The Streetwear Heat You've Been Waiting For. BBallerXchange Is Rewriting The Rules.
+        </h1>
+        {/* Waitlist button and form for all screen sizes */}
+        <div className="relative z-10 flex flex-col gap-4 w-full max-w-xs mx-auto mb-16 px-4">
+          {!showForm && (
+            <button
+              className="group bg-black border-2 border-white text-white font-bold text-base sm:text-lg tracking-[0.1em] py-4 px-4 rounded-lg transition-all duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black w-full min-h-[48px] sm:min-h-[56px]"
+              aria-label="Join the waitlist for monthly drops"
+              onClick={() => setShowForm(true)}
+            >
+              JOIN WAITLIST
+            </button>
+          )}
+          {showForm && !submitted && (
+            <form
+              action="https://gmail.us15.list-manage.com/subscribe/post?u=c98feb1046ae6101c18d4ca58&id=dead7d3b4d&f_id=00e398e1f0"
+              method="POST"
+              target="_blank"
+              className="flex flex-col gap-6 w-full max-w-md mx-auto bg-transparent p-0 rounded-none shadow-none border-none"
+            >
+              <input
+                type="text"
+                name="FNAME"
+                placeholder="Name"
+                className="bg-transparent text-white placeholder:text-white border-0 border-b border-white/80 rounded-none px-0 py-3 text-base tracking-widest font-semibold focus:outline-none focus:border-b-2 focus:border-white transition-all duration-200"
+                required
+              />
+              <input
+                type="email"
+                name="EMAIL"
+                placeholder="E-Mail"
+                className="bg-transparent text-white placeholder:text-white border-0 border-b border-white/80 rounded-none px-0 py-3 text-base tracking-widest font-semibold focus:outline-none focus:border-b-2 focus:border-white transition-all duration-200"
+                required
+              />
+              {/* Hidden field for bots */}
+              <div style={{ position: "absolute", left: "-5000px" }} aria-hidden="true">
+                <input type="text" name="b_c98feb1046ae6101c18d4ca58_dead7d3b4d" tabIndex={-1} defaultValue="" />
+              </div>
+              <button
+                type="submit"
+                className="w-full border border-white text-white bg-transparent font-bold uppercase tracking-widest py-3 mt-2 transition-all duration-200 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white"
+              >
+                Submit
+              </button>
+            </form>
+          )}
+          {submitted && (
+            <div className="bg-green-100 text-green-800 p-4 rounded-lg text-center font-semibold">
+              Thank you for joining the waitlist!
+            </div>
+          )}
+        </div>
+      </div>
+    </main>
+  )
+}
