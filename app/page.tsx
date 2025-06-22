@@ -7,40 +7,16 @@ import { useRouter } from "next/navigation"
 
 export default function LandingPage() {
   const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", lastname: "" });
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
-  const router = useRouter();
 
-  // Replace with your Mailchimp form action URL
-  const MAILCHIMP_URL = "https://YOUR_MAILCHIMP_URL";
+  // IMPORTANT: Replace this with your actual Mailchimp form action URL
+  const MAILCHIMP_URL = "https://gmail.us15.list-manage.com/subscribe/post?u=c98feb1046ae6101c18d4ca58&id=dead7d3b4d&f_id=00e398e1f0";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
     setSubmitting(true);
-    setError("");
-    try {
-      const formData = new FormData();
-      formData.append("NAME", form.name);
-      formData.append("EMAIL", form.email);
-      formData.append("LASTNAME", form.lastname);
-      // Mailchimp expects specific field names, adjust as needed
-      const res = await fetch(MAILCHIMP_URL, {
-        method: "POST",
-        body: formData,
-        mode: "no-cors",
-      });
-      // Redirect to success page
-      router.push('/success');
-    } catch (err) {
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setSubmitting(false);
-    }
+    // The form will now submit to Mailchimp via its `action` attribute.
+    // We keep this handler to show the loading state.
+    // The redirect will be handled by Mailchimp.
   };
 
   return (
@@ -80,12 +56,16 @@ export default function LandingPage() {
           )}
           {showForm && (
             <form
-              action="https://gmail.us15.list-manage.com/subscribe/post?u=c98feb1046ae6101c18d4ca58&id=dead7d3b4d&f_id=00e398e1f0"
+              action={MAILCHIMP_URL}
               method="POST"
-              target="_blank"
+              target="_blank" // Opens Mailchimp confirmation in new tab
               className="flex flex-col gap-6 w-full max-w-md mx-auto bg-transparent p-0 rounded-none shadow-none border-none"
               onSubmit={handleSubmit}
             >
+              {/* This field tells Mailchimp where to redirect after success */}
+              <input type="hidden" name="u" value="c98feb1046ae6101c18d4ca58" />
+              <input type="hidden" name="id" value="dead7d3b4d" />
+              
               <input
                 type="text"
                 name="FNAME"
@@ -111,11 +91,6 @@ export default function LandingPage() {
               >
                 {submitting ? "Submitting..." : "Submit"}
               </button>
-              {error && (
-                <div className="bg-red-100 text-red-800 p-4 rounded-lg text-center font-semibold">
-                  {error}
-                </div>
-              )}
             </form>
           )}
         </div>
