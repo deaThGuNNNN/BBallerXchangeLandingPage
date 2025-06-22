@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image"
 import type { Metadata } from "next"
-import BasketballBackgroundWrapper from "@/components/BasketballBackgroundWrapper"
+// import BasketballBackgroundWrapper from "@/components/BasketballBackgroundWrapper" // No longer needed
 import React, { useState } from "react"
 import { useRouter } from "next/navigation"
 
@@ -21,8 +21,8 @@ export default function LandingPage() {
 
   return (
     <main className="min-h-screen bg-black relative overflow-hidden flex flex-col sm:justify-center sm:items-center px-2 sm:px-4 pt-4 sm:pt-0">
-      {/* Animated Basketball Background */}
-      <BasketballBackgroundWrapper />
+      {/* Animated Basketball Background - REMOVED */}
+      {/* <BasketballBackgroundWrapper /> */}
       {/* Noise Background */}
       <div className="absolute inset-0 opacity-30 bg-noise animate-grain"></div>
 

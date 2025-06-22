@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image"
-import BasketballBackgroundWrapper from "@/components/BasketballBackgroundWrapper"
+// import BasketballBackgroundWrapper from "@/components/BasketballBackgroundWrapper" // No longer needed
 import Link from "next/link"
 import { CheckCircle, Star, Users, Gift, ArrowRight, Sparkles, Trophy, Zap, Heart, Clock, Quote, Volume2, MousePointer } from "lucide-react"
 import { useEffect, useState, useRef } from "react"
@@ -109,7 +109,7 @@ export default function SuccessPage() {
 
   return (
     <main ref={containerRef} className="min-h-screen bg-black relative overflow-hidden cursor-none">
-      <BasketballBackgroundWrapper />
+      {/* <BasketballBackgroundWrapper /> */}
       <div className="absolute inset-0 opacity-8 bg-noise animate-grain"></div>
       
       {/* Custom Cursor */}
