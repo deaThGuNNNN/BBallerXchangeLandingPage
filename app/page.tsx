@@ -154,6 +154,13 @@ export default function LandingPage() {
       {/* Animated Tagline at the bottom */}
       <div className="mt-auto">
         <AnimatedTagline />
+        
+        {/* Copyright Footer */}
+        <div className="text-center pb-4 sm:pb-6 px-4">
+          <p className="text-white/60 text-xs sm:text-sm font-medium tracking-wide">
+            © BBallerXchange — From the Court to the Streets
+          </p>
+        </div>
       </div>
     </main>
   )
