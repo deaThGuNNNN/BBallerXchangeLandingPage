@@ -1,9 +1,9 @@
 'use client';
 import Image from "next/image"
-import type { Metadata } from "next"
 // import BasketballBackgroundWrapper from "@/components/BasketballBackgroundWrapper" // No longer needed
 import React, { useState } from "react"
 import { useRouter } from "next/navigation"
+import AnimatedTagline from "@/components/AnimatedTagline"
 
 export default function LandingPage() {
   const [showForm, setShowForm] = useState(false);
@@ -20,11 +20,10 @@ export default function LandingPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black relative overflow-hidden flex flex-col sm:justify-center sm:items-center px-2 sm:px-4 pt-4 sm:pt-0">
+    <main className="min-h-screen bg-transparent relative overflow-hidden flex flex-col sm:justify-center sm:items-center px-2 sm:px-4 pt-4 sm:pt-0">
       {/* Animated Basketball Background - REMOVED */}
       {/* <BasketballBackgroundWrapper /> */}
-      {/* Noise Background */}
-      <div className="absolute inset-0 opacity-30 bg-noise animate-grain"></div>
+      {/* Noise Background - REMOVED */}
 
       {/* Logo at the Top (always at top on mobile, centered on desktop) */}
       <div className="relative z-20 flex justify-center w-full mb-6 sm:mb-8 pt-2 sm:pt-0 sm:mt-0">
@@ -95,6 +94,9 @@ export default function LandingPage() {
           )}
         </div>
       </div>
+
+      {/* Animated Tagline at the bottom */}
+      <AnimatedTagline />
     </main>
   )
 }
