@@ -20,33 +20,34 @@ export default function LandingPage() {
   };
 
   return (
-    <main className="min-h-screen bg-transparent relative overflow-hidden flex flex-col sm:justify-center sm:items-center px-2 sm:px-4 pt-4 sm:pt-0">
+    <main className="min-h-screen bg-transparent relative overflow-hidden flex flex-col justify-between sm:justify-center sm:items-center px-3 sm:px-4 py-4 sm:py-0">
       {/* Animated Basketball Background - REMOVED */}
       {/* <BasketballBackgroundWrapper /> */}
       {/* Noise Background - REMOVED */}
 
-      {/* Logo at the Top (always at top on mobile, centered on desktop) */}
-      <div className="relative z-20 flex justify-center w-full mb-6 sm:mb-8 pt-2 sm:pt-0 sm:mt-0">
+      {/* Logo at the Top */}
+      <div className="relative z-20 flex justify-center w-full mb-4 sm:mb-8 pt-safe">
         <Image
           src="/bbx-logo.svg"
           alt="BBallerXchange Logo"
           width={320}
           height={128}
           priority
-          className="w-auto h-32 xs:h-40 sm:h-48 md:h-56 filter drop-shadow-2xl mx-auto"
+          className="w-auto h-24 xs:h-28 sm:h-40 md:h-48 lg:h-56 filter drop-shadow-2xl mx-auto"
         />
       </div>
 
-      {/* Content + Button (centered on desktop, split on mobile) */}
-      <div className="relative z-10 flex flex-col items-center text-center w-full max-w-md mx-auto flex-1 justify-center px-2 sm:px-0 sm:justify-center sm:items-center">
-        <h1 className="text-white font-bold text-lg xs:text-xl sm:text-2xl md:text-3xl mb-8 sm:mb-8 leading-relaxed">
+      {/* Content + Button Container */}
+      <div className="relative z-10 flex flex-col items-center text-center w-full max-w-sm sm:max-w-md mx-auto flex-1 justify-center px-1 sm:px-0">
+        <h1 className="text-white font-bold text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
           Join the Next Era Of Basketball Culture. Limited Drops, Pro Gear, And The Streetwear Heat You've Been Waiting For. BBallerXchange Is Rewriting The Rules.
         </h1>
-        {/* Waitlist button and form for all screen sizes */}
-        <div className="relative z-10 flex flex-col gap-4 w-full max-w-xs mx-auto mb-16 px-4">
+        
+        {/* Waitlist button and form */}
+        <div className="relative z-10 flex flex-col gap-4 w-full max-w-xs mx-auto mb-8 sm:mb-16 px-2 sm:px-4">
           {!showForm && (
             <button
-              className="group bg-black border-2 border-white text-white font-bold text-base sm:text-lg tracking-[0.1em] py-4 px-4 rounded-lg transition-all duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black w-full min-h-[48px] sm:min-h-[56px]"
+              className="group bg-black border-2 border-white text-white font-bold text-sm xs:text-base sm:text-lg tracking-[0.1em] py-4 px-6 rounded-lg transition-all duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black w-full min-h-[52px] sm:min-h-[56px] touch-manipulation"
               aria-label="Join the waitlist for monthly drops"
               onClick={() => setShowForm(true)}
             >
@@ -57,11 +58,11 @@ export default function LandingPage() {
             <form
               action={MAILCHIMP_URL}
               method="POST"
-              target="_blank" // Opens Mailchimp confirmation in new tab
-              className="flex flex-col gap-6 w-full max-w-md mx-auto bg-transparent p-0 rounded-none shadow-none border-none"
+              target="_blank"
+              className="flex flex-col gap-4 sm:gap-6 w-full max-w-md mx-auto bg-transparent p-0 rounded-none shadow-none border-none"
               onSubmit={handleSubmit}
             >
-              {/* This field tells Mailchimp where to redirect after success */}
+              {/* Hidden Mailchimp fields */}
               <input type="hidden" name="u" value="c98feb1046ae6101c18d4ca58" />
               <input type="hidden" name="id" value="dead7d3b4d" />
               
@@ -69,14 +70,14 @@ export default function LandingPage() {
                 type="text"
                 name="FNAME"
                 placeholder="Name"
-                className="bg-transparent text-white placeholder:text-white border-0 border-b border-white/80 rounded-none px-0 py-3 text-base tracking-widest font-semibold focus:outline-none focus:border-b-2 focus:border-white transition-all duration-200"
+                className="bg-transparent text-white placeholder:text-white/80 border-0 border-b border-white/80 rounded-none px-0 py-3 text-sm sm:text-base tracking-wider font-medium focus:outline-none focus:border-b-2 focus:border-white transition-all duration-200 touch-manipulation"
                 required
               />
               <input
                 type="email"
                 name="EMAIL"
                 placeholder="E-Mail"
-                className="bg-transparent text-white placeholder:text-white border-0 border-b border-white/80 rounded-none px-0 py-3 text-base tracking-widest font-semibold focus:outline-none focus:border-b-2 focus:border-white transition-all duration-200"
+                className="bg-transparent text-white placeholder:text-white/80 border-0 border-b border-white/80 rounded-none px-0 py-3 text-sm sm:text-base tracking-wider font-medium focus:outline-none focus:border-b-2 focus:border-white transition-all duration-200 touch-manipulation"
                 required
               />
               {/* Hidden field for bots */}
@@ -86,7 +87,7 @@ export default function LandingPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full border border-white text-white bg-transparent font-bold uppercase tracking-widest py-3 mt-2 transition-all duration-200 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full border border-white text-white bg-transparent font-bold uppercase tracking-wider text-sm sm:text-base py-3 sm:py-4 mt-2 transition-all duration-200 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white disabled:opacity-50 disabled:cursor-not-allowed min-h-[48px] sm:min-h-[52px] touch-manipulation"
               >
                 {submitting ? "Submitting..." : "Submit"}
               </button>
@@ -96,7 +97,9 @@ export default function LandingPage() {
       </div>
 
       {/* Animated Tagline at the bottom */}
-      <AnimatedTagline />
+      <div className="mt-auto">
+        <AnimatedTagline />
+      </div>
     </main>
   )
 }

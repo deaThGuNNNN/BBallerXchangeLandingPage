@@ -12,6 +12,22 @@
   }
 }
 
+/* Mobile-first optimizations */
+@supports (padding: max(0px)) {
+  .pt-safe {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Touch optimization */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Enhanced Glitchy Noise Background */
 .bg-glitch-noise::before {
   content: "";
@@ -87,6 +103,25 @@
   letter-spacing: 0.2em;
 }
 
+/* Mobile responsive marquee text */
+@media (max-width: 640px) {
+  .background-text-marquee span {
+    font-size: 1.25rem !important;
+    padding: 0 1rem !important;
+    letter-spacing: 0.1em !important;
+  }
+  .background-text-marquee .marquee-track {
+    padding: 1rem 0 !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .background-text-marquee span {
+    font-size: 1.75rem !important;
+    padding: 0 1.5rem !important;
+  }
+}
+
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -129,11 +164,14 @@ button {
   body {
     @apply bg-black text-white antialiased;
     font-family: var(--font-inter), system-ui, sans-serif;
+    /* Prevent zoom on iOS */
+    -webkit-text-size-adjust: 100%;
   }
   html {
     scroll-behavior: smooth;
   }
 }
+
 @layer utilities {
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));
@@ -145,24 +183,47 @@ button {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 }
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+
+/* Custom scrollbar - hide on mobile */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #f97316;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ea580c;
+  }
 }
-::-webkit-scrollbar-track {
-  background: #1e293b;
-}
-::-webkit-scrollbar-thumb {
-  background: #f97316;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #ea580c;
-}
+
 /* Glow effects */
 .glow-orange {
   box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
 }
 .glow-red {
   box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+/* Mobile viewport fixes */
+@media (max-width: 640px) {
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Better button spacing */
+  button, input {
+    -webkit-appearance: none;
+    border-radius: 8px;
+  }
+  
+  /* Improve form readability */
+  input::placeholder {
+    opacity: 0.8;
+  }
 }
