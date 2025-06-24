@@ -3,7 +3,7 @@ import Image from "next/image"
 // import BasketballBackgroundWrapper from "@/components/BasketballBackgroundWrapper" // No longer needed
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import AnimatedTagline from "@/components/AnimatedTagline"
+import TextFrameBorder from "@/components/TextFrameBorder"
 
 export default function LandingPage() {
   const [showForm, setShowForm] = useState(false);
@@ -76,9 +76,8 @@ export default function LandingPage() {
 
   return (
     <main className="min-h-screen bg-transparent relative overflow-hidden flex flex-col justify-between sm:justify-center sm:items-center px-3 sm:px-4 py-4 sm:py-0" style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
-      {/* Animated Basketball Background - REMOVED */}
-      {/* <BasketballBackgroundWrapper /> */}
-      {/* Noise Background - REMOVED */}
+      {/* Text Frame Border */}
+      <TextFrameBorder />
 
       {/* Logo at the Top */}
       <div className="relative z-20 flex justify-center w-full mb-4 sm:mb-8 pt-safe">
@@ -151,16 +150,11 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Animated Tagline at the bottom */}
-      <div className="mt-auto">
-        <AnimatedTagline />
-        
-        {/* Copyright Footer */}
-        <div className="text-center pb-4 sm:pb-6 px-4">
-          <p className="text-white/60 text-xs sm:text-sm font-medium tracking-wide">
-            © BBallerXchange — From the Court to the Streets
-          </p>
-        </div>
+      {/* Copyright Footer */}
+      <div className="text-center pb-20 sm:pb-24 px-4 relative z-10">
+        <p className="text-white/60 text-xs sm:text-sm font-medium tracking-wide">
+          © BBallerXchange — From the Court to the Streets
+        </p>
       </div>
     </main>
   )

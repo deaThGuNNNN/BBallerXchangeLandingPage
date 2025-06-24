@@ -67,67 +67,7 @@
   90% { transform: translate(-10%, 10%); }
 }
 
-/* Repeating Text Marquee */
-.background-text-marquee {
-  position: absolute;
-  top: -15%;
-  left: -15%;
-  width: 130%;
-  height: 130%;
-  overflow: hidden;
-  z-index: -2;
-  color: rgba(255, 255, 255, 0.06);
-  pointer-events: none;
-}
 
-.background-text-marquee--primary {
-  transform: rotate(-20deg);
-}
-
-.background-text-marquee--secondary {
-  transform: rotate(20deg);
-}
-
-.background-text-marquee .marquee-track {
-  display: flex;
-  white-space: nowrap;
-  animation: marquee 80s linear infinite;
-  padding: 2rem 0;
-}
-
-.background-text-marquee--secondary .marquee-track {
-  animation-name: marquee-reverse;
-  animation-duration: 100s;
-}
-
-.background-text-marquee span {
-  font-size: 2.5rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  padding: 0 2rem;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-  color: transparent;
-  letter-spacing: 0.2em;
-}
-
-/* Mobile responsive marquee text */
-@media (max-width: 640px) {
-  .background-text-marquee span {
-    font-size: 1.25rem !important;
-    padding: 0 1rem !important;
-    letter-spacing: 0.1em !important;
-  }
-  .background-text-marquee .marquee-track {
-    padding: 1rem 0 !important;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 768px) {
-  .background-text-marquee span {
-    font-size: 1.75rem !important;
-    padding: 0 1.5rem !important;
-  }
-}
 
 @keyframes marquee {
   0% { transform: translateX(0); }
@@ -244,3 +184,68 @@ button {
     min-height: -webkit-fill-available;
   }
 }
+
+/* Horizontal marquee for bottom of page */
+.horizontal-marquee-container {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  margin-top: 32px;
+}
+
+@media (min-width: 640px) {
+  .horizontal-marquee-container {
+    height: 96px;
+    margin-bottom: 32px;
+  }
+}
+
+.horizontal-marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  padding: 8px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.horizontal-marquee-track span {
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 0 1rem;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.2em;
+  display: inline-block;
+}
+
+/* Mobile responsive horizontal marquee text */
+@media (max-width: 640px) {
+  .horizontal-marquee-track span {
+    font-size: 1rem !important;
+    padding: 0 0.75rem !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .horizontal-marquee-track span {
+    font-size: 1.5rem !important;
+    padding: 0 1.25rem !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .horizontal-marquee-track span {
+    font-size: 2rem !important;
+    padding: 0 1.5rem !important;
+  }
+}
+
+/* Removed old text-frame CSS - now using Tailwind classes in the component */
