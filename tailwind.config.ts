@@ -103,8 +103,8 @@ const config: Config = {
   		      animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        marquee: 'marquee 120s linear infinite',
-        'marquee-reverse': 'marquee-reverse 120s linear infinite'
+        marquee: 'marquee 200s linear infinite',
+        'marquee-reverse': 'marquee-reverse 200s linear infinite'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
