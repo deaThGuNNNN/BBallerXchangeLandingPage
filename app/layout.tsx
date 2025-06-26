@@ -18,6 +18,26 @@ export const metadata: Metadata = {
   // --- Remote unique additions below ---
   keywords: "sneakers, basketball, premium, exclusive, drops, marketplace, authentic, trading",
   robots: "index, follow",
+  icons: {
+    icon: [
+      { url: "/BBX_LOGOMARK (white).png", sizes: "32x32", type: "image/png" },
+      { url: "/BBX_LOGOMARK (white).png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/BBX_LOGOMARK (white).png",
+    apple: [
+      { url: "/BBX_LOGOMARK (white).png", sizes: "180x180", type: "image/png" },
+      { url: "/BBX_LOGOMARK (white).png", sizes: "152x152", type: "image/png" },
+      { url: "/BBX_LOGOMARK (white).png", sizes: "120x120", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "icon",
+        url: "/BBX_LOGOMARK (white).png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+    ],
+  },
   openGraph: {
     title: "BBallerXchange | Heat Loading…",
     description: "The future of premium sneaker trading. Exclusive drops, verified authenticity, unmatched experience.",
@@ -42,6 +62,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/BBX_LOGOMARK (white).png" sizes="any" />
+      </head>
       <body className={`${inter.className} antialiased bg-glitch-noise relative overflow-hidden`}>
         <ThemeProvider
           attribute="class"

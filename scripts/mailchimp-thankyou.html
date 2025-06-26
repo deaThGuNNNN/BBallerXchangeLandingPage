@@ -65,49 +65,6 @@
       90% { transform: translate(-10%, 10%); }
     }
 
-    /* EXACT text marquee implementation from main page */
-    .background-text-marquee {
-      position: absolute;
-      top: -15%;
-      left: -15%;
-      width: 130%;
-      height: 130%;
-      overflow: hidden;
-      z-index: -2;
-      color: rgba(255, 255, 255, 0.06);
-      pointer-events: none;
-    }
-
-    .background-text-marquee--primary {
-      transform: rotate(-20deg);
-    }
-
-    .background-text-marquee--secondary {
-      transform: rotate(20deg);
-    }
-
-    .background-text-marquee .marquee-track {
-      display: flex;
-      white-space: nowrap;
-      animation: marquee 80s linear infinite;
-      padding: 2rem 0;
-    }
-
-    .background-text-marquee--secondary .marquee-track {
-      animation-name: marquee-reverse;
-      animation-duration: 100s;
-    }
-
-    .background-text-marquee span {
-      font-size: 2.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      padding: 0 2rem;
-      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-      color: rgba(255, 255, 255, 0.15);
-      letter-spacing: 0.2em;
-    }
-
     @keyframes marquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -116,6 +73,86 @@
     @keyframes marquee-reverse {
       0% { transform: translateX(-50%); }
       100% { transform: translateX(0); }
+    }
+
+    /* TextFrameBorder styles */
+    .text-frame-border-top,
+    .text-frame-border-bottom,
+    .text-frame-border-left,
+    .text-frame-border-right {
+      position: fixed;
+      overflow: hidden;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .text-frame-border-top,
+    .text-frame-border-bottom {
+      left: 0;
+      right: 0;
+      height: 60px;
+    }
+
+    .text-frame-border-top {
+      top: 0;
+    }
+
+    .text-frame-border-bottom {
+      bottom: 0;
+    }
+
+    .text-frame-border-left,
+    .text-frame-border-right {
+      top: 0;
+      bottom: 0;
+      width: 60px;
+    }
+
+    .text-frame-border-left {
+      left: 0;
+    }
+
+    .text-frame-border-right {
+      right: 0;
+    }
+
+    .marquee-container {
+      position: absolute;
+      display: flex;
+      animation: marquee 40s linear infinite;
+    }
+
+    .marquee-container-reverse {
+      animation: marquee-reverse 40s linear infinite;
+    }
+
+    .vertical-wrapper {
+      position: absolute;
+      width: 200vh;
+      height: 60px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+      transform-origin: center;
+    }
+
+    .vertical-wrapper-right {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .marquee-text {
+      display: flex;
+      white-space: nowrap;
+    }
+
+    .marquee-text span {
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.15);
+      padding: 0 2rem;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
     }
 
     .logo-container {
@@ -303,19 +340,52 @@
 </head>
 <body>
 
-  <!-- EXACT GlitchyBackground component implementation -->
-  <div class="background-text-marquee background-text-marquee--primary" aria-hidden="true">
-    <div class="marquee-track">
-      <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
-      <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+  <!-- TextFrameBorder -->
+  <!-- Top border -->
+  <div class="text-frame-border-top">
+    <div class="marquee-container">
+      <div class="marquee-text">
+        <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+        <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+      </div>
     </div>
   </div>
-  <div class="background-text-marquee background-text-marquee--secondary" aria-hidden="true">
-    <div class="marquee-track">
-      <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
-      <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+
+  <!-- Bottom border -->
+  <div class="text-frame-border-bottom">
+    <div class="marquee-container marquee-container-reverse">
+      <div class="marquee-text">
+        <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+        <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+      </div>
     </div>
   </div>
+
+  <!-- Left border -->
+  <div class="text-frame-border-left">
+    <div class="vertical-wrapper">
+      <div class="marquee-container">
+        <div class="marquee-text">
+          <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+          <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right border -->
+  <div class="text-frame-border-right">
+    <div class="vertical-wrapper vertical-wrapper-right">
+      <div class="marquee-container marquee-container-reverse">
+        <div class="marquee-text">
+          <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+          <span>FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS FOR BALLERS BY BALLERS </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="logo-container">
     <img src="https://mcusercontent.com/c98feb1046ae6101c18d4ca58/images/78cc8029-655a-40fe-5877-8c2243be4265.png" alt="BBallerXchange Logo" class="logo">
